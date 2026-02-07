@@ -8,6 +8,51 @@
 <p class="text-gray-500 text-sm mt-4">D&eacute;j&agrave; plus de 500 expatri&eacute;s accompagn&eacute;s cette ann&eacute;e. 100% anonyme et sans engagement.</p>
 </div>
 </header>
+<section class="py-20 px-6 bg-white" id="simulateur">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Simulateur de Franchise</h2>
+<p class="text-lg max-w-2xl mx-auto" style="color:var(--anthracite)">Estimez vos frais m&eacute;dicaux annuels et d&eacute;couvrez quelle franchise est la plus rentable pour vous.</p>
+</div>
+<div class="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-200 shadow-sm">
+<div class="mb-10">
+<label for="medical-expenses" class="block text-lg font-semibold text-gray-900 mb-2">Vos frais m&eacute;dicaux annuels estim&eacute;s</label>
+<p class="text-sm text-gray-500 mb-4">Incluez consultations, m&eacute;dicaments, analyses, etc.</p>
+<input type="range" id="medical-expenses" min="0" max="5000" step="50" value="1500" class="w-full h-3 rounded-lg appearance-none cursor-pointer" style="accent-color:var(--red)">
+<div class="flex justify-between items-center text-sm text-gray-500 mt-2">
+<span>0 CHF</span>
+<span class="text-2xl font-bold text-red-brand" id="expense-display">1'500 CHF</span>
+<span>5'000 CHF</span>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-6 mb-8">
+<div class="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-200" id="card-300">
+<h3 class="text-xl font-bold text-gray-900 mb-4">Franchise 300 CHF</h3>
+<div class="space-y-3 text-sm" style="color:var(--anthracite)">
+<div class="flex justify-between"><span>Primes annuelles</span><span class="font-semibold text-gray-900">4'800 CHF</span></div>
+<div class="flex justify-between"><span>Franchise pay&eacute;e</span><span class="font-semibold text-gray-900" id="franchise-300">300 CHF</span></div>
+<div class="flex justify-between"><span>Quote-part (10%, max 700)</span><span class="font-semibold text-gray-900" id="quotepart-300">120 CHF</span></div>
+<div class="border-t border-gray-200 pt-3 flex justify-between text-lg"><span class="font-bold text-gray-900">Co&ucirc;t total</span><span class="font-bold text-red-brand" id="total-300">5'220 CHF</span></div>
+</div>
+</div>
+<div class="bg-white rounded-xl p-6 border-2 border-red-brand transition-all duration-200" id="card-2500">
+<h3 class="text-xl font-bold text-gray-900 mb-4">Franchise 2'500 CHF</h3>
+<div class="space-y-3 text-sm" style="color:var(--anthracite)">
+<div class="flex justify-between"><span>Primes annuelles</span><span class="font-semibold text-gray-900">3'300 CHF</span></div>
+<div class="flex justify-between"><span>Franchise pay&eacute;e</span><span class="font-semibold text-gray-900" id="franchise-2500">1'500 CHF</span></div>
+<div class="flex justify-between"><span>Quote-part (10%, max 700)</span><span class="font-semibold text-gray-900" id="quotepart-2500">0 CHF</span></div>
+<div class="border-t border-gray-200 pt-3 flex justify-between text-lg"><span class="font-bold text-gray-900">Co&ucirc;t total</span><span class="font-bold text-red-brand" id="total-2500">4'800 CHF</span></div>
+</div>
+</div>
+</div>
+<div class="rounded-xl p-6 text-center transition-all duration-200" id="verdict-box" style="background-color:#FEF2F2">
+<p class="text-lg font-bold text-gray-900" id="verdict-text"></p>
+<p class="text-sm mt-1" style="color:var(--anthracite)" id="verdict-detail"></p>
+</div>
+</div>
+<p class="text-center text-gray-400 text-xs mt-6">Simulation indicative bas&eacute;e sur une diff&eacute;rence de prime de 125&nbsp;CHF/mois entre les deux franchises.</p>
+</div>
+</section>
 <section class="py-20 px-6 bg-gray-50">
 <div class="max-w-4xl mx-auto">
 <div class="text-center mb-16">
@@ -102,4 +147,58 @@
 <p>LePlaanB &copy; 2026 &mdash; Guide Ind&eacute;pendant pour l'Expatriation en Suisse.</p>
 <p class="mt-1">Informations conformes &agrave; la loi f&eacute;d&eacute;rale sur l'assurance-maladie (LAMal).</p>
 </footer>
+<script>
+(function(){
+var slider=document.getElementById('medical-expenses');
+var expenseDisplay=document.getElementById('expense-display');
+var PRIME_300=4800;
+var PRIME_2500=3300;
+function fmt(n){var s=Math.round(n).toString();return s.length>3?s.slice(0,-3)+"'"+s.slice(-3)+' CHF':s+' CHF';}
+function calc(exp){
+var fr300=Math.min(exp,300);
+var qp300=Math.min(Math.max(0,exp-300)*0.10,700);
+var t300=PRIME_300+fr300+qp300;
+var fr2500=Math.min(exp,2500);
+var qp2500=Math.min(Math.max(0,exp-2500)*0.10,700);
+var t2500=PRIME_2500+fr2500+qp2500;
+document.getElementById('franchise-300').textContent=fmt(fr300);
+document.getElementById('quotepart-300').textContent=fmt(Math.round(qp300));
+document.getElementById('total-300').textContent=fmt(Math.round(t300));
+document.getElementById('franchise-2500').textContent=fmt(fr2500);
+document.getElementById('quotepart-2500').textContent=fmt(Math.round(qp2500));
+document.getElementById('total-2500').textContent=fmt(Math.round(t2500));
+var diff=Math.abs(Math.round(t300-t2500));
+var vt=document.getElementById('verdict-text');
+var vd=document.getElementById('verdict-detail');
+var vb=document.getElementById('verdict-box');
+var c3=document.getElementById('card-300');
+var c25=document.getElementById('card-2500');
+if(t2500<t300){
+vt.textContent='\u2714 Franchise 2\'500 CHF recommand\u00e9e';
+vd.textContent='Vous \u00e9conomisez '+fmt(diff)+' par an avec la franchise haute.';
+vb.style.backgroundColor='#FEF2F2';
+c25.className='bg-white rounded-xl p-6 border-2 border-red-brand transition-all duration-200';
+c3.className='bg-white rounded-xl p-6 border border-gray-200 transition-all duration-200';
+}else if(t300<t2500){
+vt.textContent='\u2714 Franchise 300 CHF recommand\u00e9e';
+vd.textContent='Vous \u00e9conomisez '+fmt(diff)+' par an avec la franchise basse.';
+vb.style.backgroundColor='#FEF2F2';
+c3.className='bg-white rounded-xl p-6 border-2 border-red-brand transition-all duration-200';
+c25.className='bg-white rounded-xl p-6 border border-gray-200 transition-all duration-200';
+}else{
+vt.textContent='Les deux franchises co\u00fbtent le m\u00eame prix';
+vd.textContent='Choisissez selon votre tol\u00e9rance au risque.';
+vb.style.backgroundColor='#F9FAFB';
+c3.className='bg-white rounded-xl p-6 border border-gray-200 transition-all duration-200';
+c25.className='bg-white rounded-xl p-6 border border-gray-200 transition-all duration-200';
+}
+}
+slider.addEventListener('input',function(){
+var v=parseInt(this.value);
+expenseDisplay.textContent=fmt(v);
+calc(v);
+});
+calc(1500);
+})();
+</script>
 </body></html>
