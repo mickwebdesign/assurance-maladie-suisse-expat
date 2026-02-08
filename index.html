@@ -259,7 +259,7 @@ vd.textContent='Vous \u00e9conomisez '+fmt(absDiff)+' par an avec la franchise b
 vb.style.backgroundColor='#FEF2F2';
 c3.className='bg-white rounded-xl p-6 border-2 border-red-brand transition-all duration-200';
 c25.className='bg-white rounded-xl p-6 border border-gray-200 transition-all duration-200';
-sa.textContent='1\'500 CHF (en primes)';
+sa.textContent=fmt(absDiff);
 sb.style.display='block';
 }else{
 vt.textContent='Les deux franchises co\u00fbtent le m\u00eame prix';
@@ -267,7 +267,7 @@ vd.textContent='Choisissez la franchise haute pour lib\u00e9rer du budget compl\
 vb.style.backgroundColor='#F9FAFB';
 c3.className='bg-white rounded-xl p-6 border border-gray-200 transition-all duration-200';
 c25.className='bg-white rounded-xl p-6 border border-gray-200 transition-all duration-200';
-sa.textContent='1\'500 CHF (en primes)';
+sa.textContent=fmt(absDiff);
 sb.style.display='block';
 }
 }
