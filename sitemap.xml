@@ -2,20 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.affiliation-lamal-suisse.ch/</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.affiliation-lamal-suisse.ch/mentions-legales.html</loc>
-    <lastmod>2026-02-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.affiliation-lamal-suisse.ch/soins-dentaires-suisse-remboursement.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.affiliation-lamal-suisse.ch/politique-de-confidentialite.html</loc>
-    <lastmod>2026-02-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.affiliation-lamal-suisse.ch/grossesse-suisse-assurance-complementaire.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.affiliation-lamal-suisse.ch/assurance-complementaire-suisse-comparatif-2026.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
