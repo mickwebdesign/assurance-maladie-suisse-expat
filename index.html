@@ -148,6 +148,62 @@
 </div>
 </div>
 </section>
+<section class="py-20 px-6 bg-white" id="profil">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Quelle Est Votre Situation ?</h2>
+<p class="text-lg max-w-2xl mx-auto" style="color:var(--anthracite)">1 clic pour obtenir la strat&eacute;gie d'assurance adapt&eacute;e &agrave; votre profil.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-6 mb-8">
+<button onclick="showProfil('nouvel',this)" class="profil-btn bg-white border-2 border-gray-200 rounded-2xl p-8 text-center hover:shadow-md transition-all">
+<div class="w-14 h-14 rounded-full bg-red-50 mx-auto mb-4 flex items-center justify-center">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#DC2626" stroke-width="1.5" opacity=".3"/></svg>
+</div>
+<h3 class="text-lg font-bold text-gray-900 mb-2">Nouvel arrivant</h3>
+<p class="text-sm" style="color:var(--anthracite)">Je viens d'arriver ou je m'installe bientôt en Suisse</p>
+</button>
+<button onclick="showProfil('famille',this)" class="profil-btn bg-white border-2 border-gray-200 rounded-2xl p-8 text-center hover:shadow-md transition-all">
+<div class="w-14 h-14 rounded-full bg-red-50 mx-auto mb-4 flex items-center justify-center">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="#DC2626" stroke-width="2"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="10" r="2" stroke="#DC2626" stroke-width="2"/><path d="M21 21v-1a3 3 0 00-3-3" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg>
+</div>
+<h3 class="text-lg font-bold text-gray-900 mb-2">Famille / Projet b&eacute;b&eacute;</h3>
+<p class="text-sm" style="color:var(--anthracite)">J'ai des enfants ou je planifie une grossesse en Suisse</p>
+</button>
+<button onclick="showProfil('actif',this)" class="profil-btn bg-white border-2 border-gray-200 rounded-2xl p-8 text-center hover:shadow-md transition-all">
+<div class="w-14 h-14 rounded-full bg-red-50 mx-auto mb-4 flex items-center justify-center">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#DC2626" stroke-width="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="#DC2626" stroke-width="2"/><line x1="12" y1="12" x2="12" y2="16" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/><line x1="10" y1="14" x2="14" y2="14" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg>
+</div>
+<h3 class="text-lg font-bold text-gray-900 mb-2">D&eacute;j&agrave; install&eacute;</h3>
+<p class="text-sm" style="color:var(--anthracite)">Je vis en Suisse et veux optimiser mon assurance</p>
+</button>
+</div>
+<div id="profil-result" class="hidden rounded-2xl p-8 border-2 transition-all" style="border-color:var(--red);background:#FEF2F2"></div>
+</div>
+<script>
+(function(){
+var R={
+nouvel:{titre:"Strat&eacute;gie Nouvel Arrivant",resume:"Vous avez 3 mois pour vous affilier &agrave; la LAMal. C'est aussi le meilleur moment pour souscrire une LCA : votre dossier m&eacute;dical suisse est encore vierge, l'acceptation est quasi garantie sans r&eacute;serve.",points:["Franchise 2'500 CHF si vous &ecirc;tes en bonne sant&eacute; : &minus;125 CHF/mois sur vos primes","Souscrivez une LCA compl&egrave;te imm&eacute;diatement avec ces &eacute;conomies","Ne ratez pas la fen&ecirc;tre d'acceptation sans r&eacute;serve m&eacute;dicale"],lien:"assurance-complementaire-suisse-comparatif-2026/",lienTexte:"Voir le comparatif LCA 2026"},
+famille:{titre:"Strat&eacute;gie Famille",resume:"L'orthodontie co&ucirc;te 5'000&ndash;15'000 CHF et le d&eacute;lai de carence maternit&eacute; est de 12 mois. Deux raisons urgentes d'agir maintenant.",points:["Assurance orthodontie : souscrivez avant les 3 ans de vos enfants","Compl&eacute;mentaire maternit&eacute; : 12 mois avant votre grossesse pr&eacute;vue","Hospitali&egrave;re : chambre priv&eacute;e et libre choix du gyn&eacute;cologue pour l'accouchement"],lien:"grossesse-suisse-assurance-complementaire/",lienTexte:"Guide grossesse et assurance"},
+actif:{titre:"Strat&eacute;gie Optimisation",resume:"Si vous avez encore la franchise 300 CHF, vous perdez 1'500 CHF/an. Passez &agrave; la franchise haute et r&eacute;investissez dans une LCA compl&egrave;te. R&eacute;sultat : mieux couvert sans d&eacute;penser plus.",points:["Simulez votre &eacute;conomie exacte avec notre calculateur ci-dessus","Soins dentaires, optique, ost&eacute;opathie : tout couvert &agrave; partir de 20 CHF/mois","Comparez les formules LCA adapt&eacute;es &agrave; votre &acirc;ge et votre canton"],lien:"assurance-complementaire-suisse-comparatif-2026/",lienTexte:"Comparer les formules LCA"}
+};
+window.showProfil=function(type,btn){
+document.querySelectorAll('.profil-btn').forEach(function(b){b.style.borderColor='';b.style.backgroundColor='';});
+btn.style.borderColor='#DC2626';btn.style.backgroundColor='#FEF2F2';
+var r=R[type];
+var el=document.getElementById('profil-result');
+el.innerHTML='<h3 class="text-xl font-bold text-gray-900 mb-3">'+r.titre+'</h3>'
++'<p class="mb-5" style="color:var(--anthracite)">'+r.resume+'</p>'
++'<ul class="space-y-2 mb-6">'+r.points.map(function(p){return '<li class="flex items-start gap-2"><span style="color:var(--red);font-weight:700;flex-shrink:0">&rarr;</span><span style="color:var(--anthracite)">'+p+'</span></li>';}).join('')+'</ul>'
++'<div class="flex flex-wrap gap-4 items-center">'
++'<a href="'+r.lien+'" class="text-sm font-semibold underline" style="color:var(--red)">'+r.lienTexte+' &rarr;</a>'
++'<a href="https://www.go.leplaanb.ch/sante" class="btn-cta text-base px-6 py-3 rounded-lg">Comparer les offres</a>'
++'</div>';
+el.classList.remove('hidden');
+setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'nearest'});},50);
+};
+})();
+</script>
+</section>
 <section class="py-20 px-6 bg-gray-50">
 <div class="max-w-3xl mx-auto">
 <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900">Questions Fr&eacute;quentes &mdash; Assurance Maladie &amp; Compl&eacute;mentaire Suisse</h2>
@@ -176,6 +232,64 @@
 <p class="text-center text-gray-400 text-xs mt-10">Ce guide est valable pour les r&eacute;sidents des cantons de Gen&egrave;ve, Vaud, Valais, Fribourg, Neuch&acirc;tel et Jura. Pour en savoir plus sur votre installation, consultez notre guide complet sur <a href="https://leplaanb.ch/expatriation/" class="underline hover:text-gray-600" target="_blank" rel="noopener">l'expatriation en Suisse</a>.</p>
 </div>
 </section>
+<section class="py-20 px-6 bg-white">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Nos Guides Complets</h2>
+<p class="text-lg max-w-2xl mx-auto" style="color:var(--anthracite)">Tout ce que vous devez savoir sur l'assurance maladie en Suisse, expliqu&eacute; simplement.</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+<a href="soins-dentaires-suisse-remboursement/" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md hover:border-red-500 transition-all block">
+<div class="w-10 h-10 rounded-lg bg-red-50 mb-4 flex items-center justify-center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2c-3.5 0-6.5 1.8-7.5 4.5C3.5 7.8 2 8.5 1 9.5 1 12 3 15 5 18c.8 1.5 2 2.5 3 2.5s1.8-1 2.5-3l1.5-5 1.5 5c.7 2 1.5 3 2.5 3s2.2-1 3-2.5c2-3 4-6 4-8.5-1-1-2.5-1.7-3.5-2.5C18.5 3.8 15.5 2 12 2z" stroke="#DC2626" stroke-width="1.5" fill="none"/></svg>
+</div>
+<h3 class="font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">Soins Dentaires en Suisse</h3>
+<p class="text-sm mb-3" style="color:var(--anthracite)">Prix r&eacute;els, remboursements et strat&eacute;gie pour ne pas se retrouver avec une facture de 5'000 CHF.</p>
+<span class="text-sm font-semibold" style="color:var(--red)">Lire le guide &rarr;</span>
+</a>
+<a href="assurance-orthodontie-suisse/" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md hover:border-red-500 transition-all block">
+<div class="w-10 h-10 rounded-lg bg-red-50 mb-4 flex items-center justify-center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="10" rx="2" stroke="#DC2626" stroke-width="1.5"/><path d="M7 8V6a2 2 0 012-2h6a2 2 0 012 2v2" stroke="#DC2626" stroke-width="1.5"/><line x1="7" y1="13" x2="17" y2="13" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 2"/></svg>
+</div>
+<h3 class="font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">Assurance Orthodontie</h3>
+<p class="text-sm mb-3" style="color:var(--anthracite)">5'000 &agrave; 15'000 CHF non rembours&eacute;s par la LAMal. Comment &ecirc;tre couvert avant qu'il soit trop tard.</p>
+<span class="text-sm font-semibold" style="color:var(--red)">Lire le guide &rarr;</span>
+</a>
+<a href="grossesse-suisse-assurance-complementaire/" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md hover:border-red-500 transition-all block">
+<div class="w-10 h-10 rounded-lg bg-red-50 mb-4 flex items-center justify-center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#DC2626" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+</div>
+<h3 class="font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">Grossesse &amp; Maternit&eacute;</h3>
+<p class="text-sm mb-3" style="color:var(--anthracite)">D&eacute;lai de carence 12 mois, chambre priv&eacute;e, ost&eacute;o post-partum. Ce que la LAMal ne couvre pas.</p>
+<span class="text-sm font-semibold" style="color:var(--red)">Lire le guide &rarr;</span>
+</a>
+<a href="assurance-complementaire-suisse-comparatif-2026/" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md hover:border-red-500 transition-all block">
+<div class="w-10 h-10 rounded-lg bg-red-50 mb-4 flex items-center justify-center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+</div>
+<h3 class="font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">Comparatif LCA 2026</h3>
+<p class="text-sm mb-3" style="color:var(--anthracite)">Ambulatoire, hospitali&egrave;re, m&eacute;decines alternatives : quelle formule pour quel profil.</p>
+<span class="text-sm font-semibold" style="color:var(--red)">Voir le comparatif &rarr;</span>
+</a>
+<a href="lca-assurance-definition/" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md hover:border-red-500 transition-all block">
+<div class="w-10 h-10 rounded-lg bg-red-50 mb-4 flex items-center justify-center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<h3 class="font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">LCA : D&eacute;finition Compl&egrave;te</h3>
+<p class="text-sm mb-3" style="color:var(--anthracite)">Qu'est-ce que la LCA ? Diff&eacute;rence avec la LAMal, couvertures et pourquoi souscrire d&egrave;s l'arriv&eacute;e.</p>
+<span class="text-sm font-semibold" style="color:var(--red)">Lire le guide &rarr;</span>
+</a>
+<a href="soins-dentaires-suisse-remboursement/#simulateur-dentaire" class="group bg-red-50 border-2 rounded-2xl p-6 hover:shadow-md transition-all block" style="border-color:var(--red)">
+<div class="w-10 h-10 rounded-lg bg-white mx-0 mb-4 flex items-center justify-center shadow-sm">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#DC2626" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+</div>
+<h3 class="font-bold text-gray-900 mb-2">Simulateur Remboursement Dentaire</h3>
+<p class="text-sm mb-3" style="color:var(--anthracite)">Calculez ce que vous remboursera votre assurance dentaire sur une couronne, un implant ou un traitement orthodontique.</p>
+<span class="text-sm font-semibold" style="color:var(--red)">Tester le simulateur &rarr;</span>
+</a>
+</div>
+</div>
+</section>
 <section class="py-20 px-6 bg-gray-50">
 <div class="max-w-4xl mx-auto">
 <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-900">Simulateur Franchise LAMal 2026 : Tout Comprendre pour Calculer et Optimiser Votre Franchise</h2>
@@ -190,9 +304,9 @@
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Mod&egrave;les d'assurance : Standard, Telmed, HMO</h3>
 <p>En plus de la franchise, vous choisissez un <strong class="text-gray-900">mod&egrave;le d'acc&egrave;s aux soins</strong>. Le mod&egrave;le <strong class="text-gray-900">Standard</strong> offre le libre choix du m&eacute;decin. Le mod&egrave;le <strong class="text-gray-900">Telmed</strong> impose un appel avant consultation (10 &agrave; 15% d'&eacute;conomie). Le mod&egrave;le <strong class="text-gray-900">HMO</strong> vous oriente vers un centre partenaire (15 &agrave; 25% d'&eacute;conomie). Ces &eacute;conomies se cumulent avec l'optimisation de franchise calcul&eacute;e par notre simulateur.</p>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Compl&eacute;mentaire sant&eacute; (LCA) : compl&eacute;ter les lacunes de la LAMal</h3>
-<p>La LAMal ne couvre pas tout. Les <strong class="text-gray-900">soins dentaires</strong>, les <strong class="text-gray-900">lunettes</strong>, la <strong class="text-gray-900">chambre priv&eacute;e</strong> et les <strong class="text-gray-900">m&eacute;decines alternatives</strong> sont exclus. L'assurance compl&eacute;mentaire (LCA) comble ces lacunes pour 30 &agrave; 80&nbsp;CHF/mois. La strat&eacute;gie optimale : choisir la <strong class="text-gray-900">franchise haute gr&acirc;ce au simulateur</strong>, &eacute;conomiser sur les primes LAMal, et investir la diff&eacute;rence dans une compl&eacute;mentaire compl&egrave;te.</p>
+<p>La LAMal ne couvre pas tout. Les <a href="soins-dentaires-suisse-remboursement/" class="text-red-brand font-semibold underline"><strong>soins dentaires</strong></a> (couronnes, implants, orthodontie), les <strong class="text-gray-900">lunettes</strong>, la <strong class="text-gray-900">chambre priv&eacute;e</strong> et les <strong class="text-gray-900">m&eacute;decines alternatives</strong> sont exclus. L'<a href="lca-assurance-definition/" class="text-red-brand font-semibold underline">assurance compl&eacute;mentaire LCA</a> comble ces lacunes &agrave; partir de 20&nbsp;CHF/mois. La strat&eacute;gie optimale : choisir la <strong class="text-gray-900">franchise haute gr&acirc;ce au simulateur</strong>, &eacute;conomiser sur les primes LAMal, et investir la diff&eacute;rence dans une <a href="assurance-complementaire-suisse-comparatif-2026/" class="text-red-brand font-semibold underline">compl&eacute;mentaire compl&egrave;te</a>.</p>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Quelle franchise LAMal choisir en 2026 ?</h3>
-<p>La r&eacute;ponse d&eacute;pend de votre consommation m&eacute;dicale. Si vous consultez rarement (moins de 1'500&nbsp;CHF/an de frais), la <strong class="text-gray-900">franchise 2'500 CHF</strong> est presque toujours plus avantageuse. Si vous avez des soins r&eacute;guliers, la franchise basse peut &ecirc;tre pr&eacute;f&eacute;rable. Utilisez notre <strong class="text-gray-900">simulateur franchise LAMal</strong> ci-dessus pour calculer le sc&eacute;nario exact adapt&eacute; &agrave; votre situation et d&eacute;couvrir combien vous pouvez &eacute;conomiser.</p>
+<p>La r&eacute;ponse d&eacute;pend de votre consommation m&eacute;dicale. Si vous consultez rarement (moins de 1'500&nbsp;CHF/an de frais), la <strong class="text-gray-900">franchise 2'500 CHF</strong> est presque toujours plus avantageuse. Pour les familles, pensez aussi &agrave; l'<a href="assurance-orthodontie-suisse/" class="text-red-brand font-semibold underline">assurance orthodontie</a> et &agrave; la <a href="grossesse-suisse-assurance-complementaire/" class="text-red-brand font-semibold underline">couverture maternit&eacute;</a>. Si vous avez des soins r&eacute;guliers, la franchise basse peut &ecirc;tre pr&eacute;f&eacute;rable. Utilisez notre <strong class="text-gray-900">simulateur franchise LAMal</strong> ci-dessus pour calculer le sc&eacute;nario exact adapt&eacute; &agrave; votre situation et d&eacute;couvrir combien vous pouvez &eacute;conomiser.</p>
 <p class="mt-6"><strong class="text-gray-900">En r&eacute;sum&eacute; :</strong> le choix de la franchise est le premier levier d'&eacute;conomie en Suisse. Notre simulateur de franchise LAMal 2026 vous donne la r&eacute;ponse en quelques clics. Combinez franchise optimis&eacute;e + compl&eacute;mentaire adapt&eacute;e pour une <strong class="text-gray-900">couverture compl&egrave;te au meilleur prix</strong>.</p>
 </div>
 <div class="text-center mt-10">
